@@ -1,0 +1,30 @@
+# HOSTINGER CRON JOB COMMANDS - COPY & PASTE READY
+
+## ESSENTIAL QUEUE WORKER (REQUIRED FOR EMAILS)
+Command: /usr/bin/php /home/yourusername/public_html/artisan queue:work --stop-when-empty
+Schedule: * * * * *
+Description: Laravel Queue Worker for Email Processing
+
+## LARAVEL SCHEDULER (OPTIONAL - FOR FUTURE SCHEDULED TASKS)
+Command: /usr/bin/php /home/yourusername/public_html/artisan schedule:run
+Schedule: * * * * *
+Description: Laravel Task Scheduler
+
+## USER REASSIGNMENT (OPTIONAL - WEEKLY LOAD BALANCING)
+Command: /usr/bin/php /home/yourusername/public_html/artisan users:reassign-staff --force
+Schedule: 0 2 * * 0
+Description: Weekly User-Staff Reassignment
+
+## IMPORTANT NOTES:
+1. Replace 'yourusername' with your actual Hostinger username
+2. Replace 'public_html' with your actual project path if different
+3. The queue worker cron job is ESSENTIAL - emails won't work without it
+4. Test the PHP path - it might be /usr/bin/php8.2 or /opt/alt/php82/usr/bin/php
+
+## TESTING COMMAND (Run via SSH):
+cd /home/yourusername/public_html && php artisan queue:work --stop-when-empty
+
+## COMMON HOSTINGER PATHS:
+- Main domain: /home/yourusername/public_html/
+- Subdomain: /home/yourusername/domains/subdomain.domain.com/public_html/
+- Subfolder: /home/yourusername/public_html/yourfolder/
